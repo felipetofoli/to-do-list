@@ -1,4 +1,4 @@
-﻿using System;
+﻿using ToDo.Core.Domain.Exceptions;
 using ToDo.Core.Domain.Gateways;
 using ToDo.Core.Domain.UseCases;
 
@@ -18,7 +18,7 @@ namespace ToDo.Core.UseCases
             var item = _dataGateway.Get(id);
 
             if (item == null)
-                throw new ArgumentException($"Item with id '{id}' does not exist.");
+                throw new BusinessException($"Item with id '{id}' does not exist.");
 
             item.Do();
 

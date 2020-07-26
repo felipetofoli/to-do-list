@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using ToDo.Core.Domain.Entities;
+using ToDo.Core.Domain.Exceptions;
 using ToDo.Core.Domain.Gateways;
 using ToDo.Core.UseCases;
 using Xunit;
@@ -51,7 +51,7 @@ namespace ToDo.Core.Tests.UseCases
         {
             var doUseCase = new Do(_dataGateway);
 
-            Assert.Throws<ArgumentException>(() =>
+            Assert.Throws<BusinessException>(() =>
             {
                 doUseCase.Execute(id);
             });

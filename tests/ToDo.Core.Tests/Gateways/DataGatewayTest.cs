@@ -18,9 +18,9 @@ namespace ToDo.Core.Tests.Gateways
         [Fact]
         public void BasicDataGatewayUsage()
         {
-            // Get all, empty list
+            // Get all
             var items = _dataGateway.GetAll();
-            Assert.True(items.Count == 0);
+            var initialItemsCount = items.Count;
 
             // Add new item
             var newItemName = "newItemName";
@@ -50,9 +50,9 @@ namespace ToDo.Core.Tests.Gateways
             Assert.Equal(newItemName, undoneItem.Name);
             Assert.False(undoneItem.Done);
 
-            // Get all, with items
+            // Get all, with items one more item
             items = _dataGateway.GetAll();
-            Assert.True(items.Count == 1);
+            Assert.True(items.Count == initialItemsCount + 1);
         }
     }
 }

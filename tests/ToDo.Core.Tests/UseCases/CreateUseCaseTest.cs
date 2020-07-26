@@ -1,5 +1,5 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
+using ToDo.Core.Domain.Exceptions;
 using ToDo.Core.Domain.Gateways;
 using ToDo.Core.UseCases;
 using Xunit;
@@ -36,7 +36,7 @@ namespace ToDo.Core.Tests.UseCases
             var gateway = new InMemoryDataGateway(dataContext);
             var useCase = new Create(gateway);
 
-            Assert.Throws<ArgumentException>(() =>
+            Assert.Throws<BusinessException>(() =>
             {
                 var result = useCase.Execute(name);
             });
